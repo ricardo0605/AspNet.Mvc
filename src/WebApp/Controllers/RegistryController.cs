@@ -1,7 +1,6 @@
 ﻿using Application.Dtos;
 using Application.Interfaces;
 using Application.Services;
-using CrossCutting;
 using System;
 using System.Net;
 using System.Web.Mvc;
