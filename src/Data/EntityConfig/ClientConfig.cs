@@ -43,6 +43,8 @@ namespace Data.EntityConfig
 
             Property(c => c.RegistryDate)
                 .IsRequired();
+
+            Ignore(c => c.ValidationResult);
         }
     }
 }

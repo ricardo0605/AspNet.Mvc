@@ -17,6 +17,11 @@ namespace Domain.Services
 
         public Client Add(Client client)
         {
+            if (!client.IsValid())
+                return client;
+
+            // If CPF or Email registred
+
             return _repository.Add(client);
         }
 

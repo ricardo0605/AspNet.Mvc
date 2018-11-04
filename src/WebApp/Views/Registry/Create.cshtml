@@ -13,8 +13,8 @@
 
     <div class="form-horizontal">
         <hr />
+        @Html.Partial("_ErrorSummary")
         <h4>General info</h4>
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

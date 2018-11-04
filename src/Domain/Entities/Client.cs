@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Domain.Validations.Clients;
+using DomainValidation.Validation;
+using System;
 using System.Collections.Generic;
 
 namespace Domain.Entities
@@ -22,7 +24,15 @@ namespace Domain.Entities
         public DateTime RegistryDate { get; set; }
         public bool Active { get; set; }
 
-        public ICollection<Address> Addresses { get; set; }
-        //public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
+
+        public ValidationResult ValidationResult { get; set; }
+
+        public bool IsValid()
+        {
+            ValidationResult = new ClientIsValidValidation().Validate(this);
+
+            return ValidationResult.IsValid;
+        }
     }
 }

@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DomainValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\DomainValidation.1.0.0\lib\net453\DomainValidation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,7 +51,14 @@
     <Compile Include="Interfaces\Services\IRegistryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RegistryService.cs" />
+    <Compile Include="Specifications\Clients\ClientMustBeOver18YearSpecification.cs" />
+    <Compile Include="Specifications\Clients\ClientMustHaveValidCpfSpecification.cs" />
+    <Compile Include="Specifications\Clients\ClientMustHaveValidEmailSpecification.cs" />
+    <Compile Include="Validations\Clients\ClientIsValidValidation.cs" />
+    <Compile Include="ValueObjects\CPF.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

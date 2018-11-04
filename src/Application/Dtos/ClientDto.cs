@@ -45,6 +45,9 @@ namespace Application.Dtos
         [ScaffoldColumn(false)]
         public bool Active { get; set; }
 
+        [ScaffoldColumn(false)]
+        public DomainValidation.Validation.ValidationResult ValidationResult { get; set; }
+
         public ICollection<AddressDto> Addresses { get; set; }
     }
 }

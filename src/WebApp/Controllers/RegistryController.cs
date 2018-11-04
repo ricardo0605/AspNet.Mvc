@@ -1,6 +1,5 @@
 ﻿using Application.Dtos;
 using Application.Interfaces;
-using Application.Services;
 using System;
 using System.Net;
 using System.Web.Mvc;
@@ -63,7 +62,17 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.Add(clientDto);
+                var client = _service.Add(clientDto);
+
+                if (!client.ValidationResult.IsValid)
+                {
+                    foreach (var erro in client.ValidationResult.Erros)
+                    {
+                        ModelState.AddModelError(string.Empty, erro.Message);
+                    }
+                    return View(clientDto);
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -92,7 +101,16 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                _service.Update(clientDto);
+                var client = _service.Update(clientDto);
+
+                if (!client.ValidationResult.IsValid)
+                {
+                    foreach (var erro in client.ValidationResult.Erros)
+                    {
+                        ModelState.AddModelError(string.Empty, erro.Message);
+                    }
+                    return View(clientDto);
+                }
                 return RedirectToAction("Index");
             }
             return View(clientDto);
