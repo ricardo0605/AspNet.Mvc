@@ -1,9 +1,8 @@
 ﻿using Application.Dtos;
 using Application.Interfaces;
 using AutoMapper;
-using Data.Repository;
 using Domain.Entities;
-using Domain.Interfaces.Repository;
+using Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,63 +11,63 @@ namespace Application.Services
 {
     public class RegistryApplicationService : IRegistryApplicationService
     {
-        private readonly IRegistryRepository _repository;
+        private readonly IRegistryService _service;
 
-        public RegistryApplicationService()
+        public RegistryApplicationService(IRegistryService service)
         {
-            _repository = new RegistryRepository();
+            _service = service;
         }
 
         public ClientDto Add(ClientDto clientDto)
         {
             var client = Mapper.Map<Client>(clientDto);
 
-            var resultClient = _repository.Add(client);
+            var resultClient = _service.Add(client);
 
             return Mapper.Map<ClientDto>(resultClient);
         }
 
         public void Dispose()
         {
-            _repository.Dispose();
+            _service.Dispose();
             GC.SuppressFinalize(this);
         }
 
         public IEnumerable<ClientDto> GetAll()
         {
-            return Mapper.Map<IEnumerable<ClientDto>>(_repository.GetAll());
+            return Mapper.Map<IEnumerable<ClientDto>>(_service.GetAll());
         }
 
         public IEnumerable<ClientDto> GetAllActives()
         {
-            return Mapper.Map<IEnumerable<ClientDto>>(_repository.GetAll().Where(c => c.Active));
+            return Mapper.Map<IEnumerable<ClientDto>>(_service.GetAll().Where(c => c.Active));
         }
 
         public ClientDto GetByCPF(string cpf)
         {
-            return Mapper.Map<ClientDto>(_repository.GetByCPF(cpf));
+            return Mapper.Map<ClientDto>(_service.GetByCPF(cpf));
         }
 
         public ClientDto GetByEmail(string email)
         {
-            return Mapper.Map<ClientDto>(_repository.GetByEmail(email));
+            return Mapper.Map<ClientDto>(_service.GetByEmail(email));
         }
 
         public ClientDto GetById(Guid id)
         {
-            return Mapper.Map<ClientDto>(_repository.GetById(id));
+            return Mapper.Map<ClientDto>(_service.GetById(id));
         }
 
         public void Remove(Guid id)
         {
-            _repository.Remove(id);
+            _service.Remove(id);
         }
 
         public ClientDto Update(ClientDto clientDto)
         {
             var client = Mapper.Map<Client>(clientDto);
 
-            var resultClient = _repository.Update(client);
+            var resultClient = _service.Update(client);
 
             return Mapper.Map<ClientDto>(resultClient);
         }

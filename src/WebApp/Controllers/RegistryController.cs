@@ -24,9 +24,9 @@ namespace WebApp.Controllers
     {
         private readonly IRegistryApplicationService _service;
 
-        public RegistryController()
+        public RegistryController(IRegistryApplicationService service)
         {
-            _service = new RegistryApplicationService();
+            _service = service;
         }
 
         // [ClaimsAuthorize("ClientModule", "CL")]
