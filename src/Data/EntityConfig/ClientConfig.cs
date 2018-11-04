@@ -16,7 +16,7 @@ namespace Data.EntityConfig
             Property(c => c.Active)
                 .IsRequired();
 
-            Property(c => c.BirthOfDate)
+            Property(c => c.DateOfBirth)
                 .IsRequired();
 
             Property(c => c.CPF)

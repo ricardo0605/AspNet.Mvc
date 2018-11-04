@@ -13,6 +13,7 @@ namespace Data.EntityConfig
 
             Property(a => a.City)
                 .IsRequired()
+                .HasMaxLength(150)
                 .HasColumnType("varchar");
 
             Property(a => a.Complement)
@@ -31,6 +32,7 @@ namespace Data.EntityConfig
 
             Property(a => a.State)
                 .IsRequired()
+                .HasMaxLength(150)
                 .HasColumnType("varchar");
 
             Property(a => a.Street)

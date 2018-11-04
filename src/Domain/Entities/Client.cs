@@ -8,6 +8,9 @@ namespace Domain.Entities
         public Client()
         {
             ClientId = Guid.NewGuid();
+            RegistryDate = DateTime.Now;
+            Active = true;
+
             Addresses = new List<Address>();
         }
 
@@ -15,7 +18,7 @@ namespace Domain.Entities
         public string Name { get; set; }
         public string CPF { get; set; }
         public string Email { get; set; }
-        public DateTime BirthOfDate { get; set; }
+        public DateTime DateOfBirth { get; set; }
         public DateTime RegistryDate { get; set; }
         public bool Active { get; set; }
 

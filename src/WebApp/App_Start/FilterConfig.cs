@@ -1,4 +1,4 @@
-﻿using System.Web;
+﻿using CrossCutting;
 using System.Web.Mvc;
 
 namespace WebApp
@@ -8,6 +8,7 @@ namespace WebApp
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new GlobalErrorHandler());
         }
     }
 }
