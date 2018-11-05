@@ -54,6 +54,9 @@
     <Compile Include="Specifications\Clients\ClientMustBeOver18YearSpecification.cs" />
     <Compile Include="Specifications\Clients\ClientMustHaveValidCpfSpecification.cs" />
     <Compile Include="Specifications\Clients\ClientMustHaveValidEmailSpecification.cs" />
+    <Compile Include="Specifications\Clients\OnlyOneCpfAllowedSpecification.cs" />
+    <Compile Include="Specifications\Clients\OnlyOneEmailAllowedSpecification.cs" />
+    <Compile Include="Validations\Clients\ClientIsOkToRegistryValidation.cs" />
     <Compile Include="Validations\Clients\ClientIsValidValidation.cs" />
     <Compile Include="ValueObjects\CPF.cs" />
   </ItemGroup>

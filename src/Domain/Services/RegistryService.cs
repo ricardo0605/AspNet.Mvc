@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces.Repository;
 using Domain.Interfaces.Services;
+using Domain.Validations.Clients;
 using System;
 using System.Collections.Generic;
 
@@ -20,7 +21,10 @@ namespace Domain.Services
             if (!client.IsValid())
                 return client;
 
-            // If CPF or Email registred
+            client.ValidationResult = new ClientIsOkToRegistryValidation(_repository).Validate(client);
+
+            if (!client.ValidationResult.IsValid)
+                return client;
 
             return _repository.Add(client);
         }
