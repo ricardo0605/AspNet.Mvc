@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Data.Context;
+using Domain.Entities;
 using Domain.Interfaces.Repository;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,12 @@ namespace Data.Repository
 {
     public class RegistryRepository : Repository<Client>, IRegistryRepository
     {
+        public RegistryRepository(ApplicationContext context)
+            : base(context)
+        {
+
+        }
+
         public IEnumerable<Client> GetActives()
         {
             return Find(c => c.Active);

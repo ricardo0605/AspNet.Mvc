@@ -62,6 +62,16 @@ namespace Domain.Services
 
         public Client Update(Client client)
         {
+            if (!client.IsValid())
+                return client;
+
+            // TODO: Implement validation that also checks the Id. In that case, as we're editing this registry
+            // it won't check itself.
+            // client.ValidationResult = new ClientIsOkToRegistryValidation(_repository).Validate(client);
+
+            if (!client.ValidationResult.IsValid)
+                return client;
+
             return _repository.Update(client);
         }
     }

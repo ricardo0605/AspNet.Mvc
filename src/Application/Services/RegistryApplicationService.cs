@@ -1,6 +1,7 @@
 ﻿using Application.Dtos;
 using Application.Interfaces;
 using AutoMapper;
+using Data.UnitOfWork;
 using Domain.Entities;
 using Domain.Interfaces.Services;
 using System;
@@ -9,11 +10,12 @@ using System.Linq;
 
 namespace Application.Services
 {
-    public class RegistryApplicationService : IRegistryApplicationService
+    public class RegistryApplicationService : ApplicationService, IRegistryApplicationService
     {
         private readonly IRegistryService _service;
 
-        public RegistryApplicationService(IRegistryService service)
+        public RegistryApplicationService(IRegistryService service, IUnitOfWork uow)
+            : base(uow)
         {
             _service = service;
         }
@@ -23,6 +25,11 @@ namespace Application.Services
             var client = Mapper.Map<Client>(clientDto);
 
             var resultClient = _service.Add(client);
+
+            if (resultClient.ValidationResult.IsValid)
+            {
+                Commit();
+            }
 
             return Mapper.Map<ClientDto>(resultClient);
         }
@@ -68,6 +75,11 @@ namespace Application.Services
             var client = Mapper.Map<Client>(clientDto);
 
             var resultClient = _service.Update(client);
+
+            if (resultClient.ValidationResult.IsValid)
+            {
+                Commit();
+            }
 
             return Mapper.Map<ClientDto>(resultClient);
         }

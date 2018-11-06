@@ -13,19 +13,15 @@ namespace Data.Repository
         protected ApplicationContext _context;
         public DbSet<T> _dbSet;
 
-        public Repository()
+        public Repository(ApplicationContext context)
         {
-            _context = new ApplicationContext();
+            _context = context;
             _dbSet = _context.Set<T>();
         }
 
         public virtual T Add(T entity)
         {
-            var objAdd = _dbSet.Add(entity);
-
-            SaveChanges();
-
-            return objAdd;
+            return _dbSet.Add(entity);
         }
 
         public void Dispose()
@@ -53,8 +49,6 @@ namespace Data.Repository
         public virtual void Remove(Guid id)
         {
             _dbSet.Remove(_dbSet.Find(id));
-
-            SaveChanges();
         }
 
         public int SaveChanges()
@@ -69,8 +63,6 @@ namespace Data.Repository
             _dbSet.Attach(entity);
 
             objEntry.State = EntityState.Modified;
-
-            SaveChanges();
 
             return entity;
         }
