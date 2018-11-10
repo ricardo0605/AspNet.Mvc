@@ -1,3 +1,5 @@
 http://www.eduardopires.net.br/2014/10/tutorial-asp-net-mvc-5-ddd-ef-automapper-ioc-dicas-e-truques/
 https://blogs.msdn.microsoft.com/wcamb/2010/04/26/codeplex-domain-oriented-n-layered-net-4-0-uma-aplicao-de-referncia/
 https://www.martinfowler.com/apsupp/spec.pdf
+https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+https://docs.microsoft.com/pt-br/aspnet/web-api/overview/security/enabling-cross-origin-requests-in-web-api

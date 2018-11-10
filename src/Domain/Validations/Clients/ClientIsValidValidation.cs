@@ -14,7 +14,7 @@ namespace Domain.Validations.Clients
 
             base.Add("clientCpf", new Rule<Client>(clientCpf, "Please provide a valid CPF"));
             base.Add("clientEmail", new Rule<Client>(clientEmail, "Please provide a valid e-mail"));
-            base.Add("clientAge", new Rule<Client>(clientAge, "Sorry, you don't have age enough to registry."));
+            base.Add("clientAge", new Rule<Client>(clientAge, "Sorry, you don't have age enough to registry"));
         }
     }
 }
